@@ -42,4 +42,4 @@ at the project files inside of each of those directories and inside of each of t
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 now will create docker file in client 
-docker build -f Dockerfile.dev **.** this means build in current working directory 
+docker build -f Dockerfile.dev {**.**} this means build in current working directory 
