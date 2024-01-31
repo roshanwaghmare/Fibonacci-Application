@@ -7,6 +7,16 @@ We are creating application that calculate Fibonacci value when we enter index n
 
 ## Steps
 
+
+## to open file and folder directly form terminal u need to use below cmd
+
+```
+sudo apt install nautilus
+xdg-open .
+open .
+```
+this setup is not working for us so we find below solution 
+
 1 now we have to get all the java code from our local machine to ubuntu terminal so use below
 
 ````
@@ -18,3 +28,5 @@ cd mnt/
 i ahev copied complex folder from downloads and paste in the c dirve 
 cp -r complex/ /home/roshanw/
 ````
+
+
