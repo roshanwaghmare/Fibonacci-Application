@@ -32,5 +32,7 @@ cp -r complex/ /home/roshanw/
 
 We can start each of them up inside of a development environment. We're gonna take the React project, the express API and the worker as well and we're going to make Dev Docker files for each one.
 
-## now will create three dockerfile for each React server the express API and the worker [Dev Environment]
+## now will create three dockerfile for each React server the express API and the worker { Dev Environment}
 
+at the project files inside of each of those directories and inside of each of them we're gonna set up a pretty similar Docker file workflow. Remember that each one of these projects is probably gonna have a package.json file that records all of the dependencies of our project. We're going to copy over that package.json file as step number one. We're then going to run a NPM install and then we'll copy over everything else. The last thing to keep in mind is that we're gonna set up a Docker composed file and that Docker compose is gonna set up volumes for each of these projects so that we kind of share all of the source code
+**inside of each project and that's what's gonna make sure that we don't have to rebuild our image entirely from scratch every time that we make one tiny little change.**
