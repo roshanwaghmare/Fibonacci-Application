@@ -28,5 +28,9 @@ cd mnt/
 i ahev copied complex folder from downloads and paste in the c dirve 
 cp -r complex/ /home/roshanw/
 ````
+## hopefully you now have a complex directory and inside there is the client server in worker folders  each of those folders represent the React server the express API and the worker process as well. We're now not gonna start the process of adding Docker containers to each of these applications.
 
+We can start each of them up inside of a development environment. We're gonna take the React project, the express API and the worker as well and we're going to make Dev Docker files for each one.
+
+## now will create three dockerfile for each React server the express API and the worker [Dev Environment]
 
