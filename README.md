@@ -54,7 +54,9 @@ COPY . .
 CMD ["npm", "run", "start"]
 
 ````
-workwer and server
+workwer and server start cmd will be diffrent
+
+**the startup command is gonna be just a little bit different for the server and the worker. If you open up the package.json file, you'll notice that we set up a dev script in both of these of simply nodemon. Nodemon is a little command line tool that can be used to automatically reload your entire project whenever any of the source code inside of your project is changed. And so we're gonna take advantage of that as we are running our docker containers to make sure that any time we set up a volume and our source code changes, and the volume updates as well, we'll get our application to automatically restart with the nodemon tool.**
 ````
 FROM node:14.14.0-alpine
 WORKDIR '/app'
