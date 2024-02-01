@@ -66,6 +66,51 @@ COPY . .
 CMD ["npm", "run", "dev"]
 
 ````
+## Docker compose
 
+## Docker Compose file, is to make sure that it's a lot easier to start up each of these different images as containers with the appropriate arguments. For example, we need to make sure that the Express server is available on some given port.
 
+will create docker compose in complex directory 
+
+## development environment, we will have a complete copy of the Express server, a complete copy of Redis, and a complete copy of Postgres
+
+## Once we get these three pieces put together we'll then come back and start to add in the React application, the worker, and the Nginx server as well.
+
+**{We probably need to set up some volumes
+to make sure that anytime we change some of our source code,
+the container source code updates as well.}**
+
+docker-compose.yml
+````
+version: '3'
+services:
+  postgres:
+    image: 'postgres:latest'
+  redis:  
+    image: 'redis:latest'
+  server:
+    build:
+      dockerfile: dockerfile.dev
+      context: ./server
+    **volumes:
+      - /app/node_modules
+      - ./server:/app**
+
+**Inside the container, don't try to override this folder. Don't try to override it, don't try to redirect access to it, just leave that folder as is. And then in addition to that, we're gonna say, look at the server directory, and copy everything inside there into the app folder of the container**
+````
+## Environment Variable
+
+## The first step is when we build the image, that's the kind of preparation part. That's where we create a new image. And then at some point in the future when we actually run the container, that's the second part, that's when we actually take the image and create an instance of the container out of it. When we set up an environment variable inside of a Docker Compose file, we are setting up an environment variable that is applied at run time. So only when the container is started up.
+
+````
+  environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+Use documents on docker hub for name and port info it works as key and value 
+````
 
