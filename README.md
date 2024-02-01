@@ -41,5 +41,29 @@ at the project files inside of each of those directories and inside of each of t
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-now will create docker file in client 
+now will create **dockerfile.dev** in **client / Server /Worker** folders 
 docker build -f Dockerfile.dev {**.**} this means build in current working directory 
+````
+Client
+
+FROM node:16-alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "start"]
+
+````
+workwer and server
+````
+FROM node:14.14.0-alpine
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "run", "dev"]
+
+````
+
+
+
