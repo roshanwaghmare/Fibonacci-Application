@@ -133,5 +133,5 @@ now we have also added client and worker sever as well in docker-compose
 ````
 ## We have not yet set up any port mapping whatsoever. So there's no port mapping to expose the server to the outside world. And there's no mapping for the React project
 
-![as](https://github.com/roshanwaghmare/Fibonacci-Application/assets/142305817/504f06ac-7bc7-476e-ad2d-9a19802873e9)
+![as](https://github.com/roshanwaghmare/Fibonacci-Application/assets/142305817/36b15bf8-9991-4e92-91ec-27659d9ff827)
 
