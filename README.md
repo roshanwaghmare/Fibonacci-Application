@@ -113,4 +113,25 @@ services:
       - PGPORT=5432
 Use documents on docker hub for name and port info it works as key and value 
 ````
+now we have also added client and worker sever as well in docker-compose
+
+````
+ client:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  worker:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    volumes:
+      - /app/node_modules
+      - ./worker  
+````
+## We have not yet set up any port mapping whatsoever. So there's no port mapping to expose the server to the outside world. And there's no mapping for the React project
+
+![as](https://github.com/roshanwaghmare/Fibonacci-Application/assets/142305817/504f06ac-7bc7-476e-ad2d-9a19802873e9)
 
