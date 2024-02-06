@@ -135,3 +135,76 @@ now we have also added client and worker sever as well in docker-compose
 
 ![as](https://github.com/roshanwaghmare/Fibonacci-Application/assets/142305817/36b15bf8-9991-4e92-91ec-27659d9ff827)
 
+## Routing with Nginx
+
+now we have not maped any ports until 
+
+## so first we will create on **defualt.conf** file 
+
+Nginx is going to watch for requests from the outside world and then route them to appropriate servers. These servers are kind of behind Nginx, you cannot access these servers unless you go through the Nginx server. And so Nginx refers to these as upstream servers,
+
+Create React App by default port 3000, our server by default port 5,000. Now, the client right there, client:3000 and server:5000, those are both actual addresses. And so client and server are actual host names or essentially URLs that Nginx is going to try to direct traffic to. We are specifically using client and server right there because those are the names of the client and server services we put together inside of our Docker composed file.
+
+After we put together those two quick definitions we'll then tell Nginx that it's going to listen by default on port 80. Now, remember this is port 80 inside the container and so it doesn't really matter if we say port 80 or we say port 5 billion, at the end of the day when we run our Docker composed file we can change the actual port that is more or less exposed to the outside world,
+
+ "Essentially, if anyone comes to the slash
+
+or kind of route route,
+
+we wanna send them to the client upstream,"
+
+so that's this upstream right here,
+
+"... and if anyone goes to /API,
+
+send them to the server upstream."
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+Now will create nginx folder inside our complex and add **deafult.conf **file and **dockerfile.dev** adn will also make chnages to** docker compose**
+
+````
+default.conf
+
+upstream client {
+    server client:3000;
+}
+
+upstream api {
+    server api:5000;
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://client;
+    }
+
+    location /{
+        rewrite /api/(.*) /$1 break;
+        proxy_pass http://api;
+    }
+}
+````
+
+```
+dockerfile.dev
+FROM nginx
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+
+````
+{{important note here we have chnaged **sever** name to **api** for our understanding this is express server for api calls}}
+
+will also need to add nginx in docker compose
+
+```
+nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports: 
+      - '3050:80' 
+```
+
